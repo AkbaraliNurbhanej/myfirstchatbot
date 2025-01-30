@@ -5,8 +5,11 @@ from langchain_openai import ChatOpenAI
 # from langchain_google_genai import ChatGoogleGenerativeAI
 from langchain.chains import ConversationChain
 from langchain.chains.conversation.memory import ConversationBufferWindowMemory
-
 import os
+from dotenv import load_dotenv
+
+# Load environment variables from .env file
+load_dotenv()
 
 # os.environ["OPENAI_API_KEY"] = st.secrets["OPENAI_API_KEY"]
 
@@ -23,9 +26,8 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 # llm = ChatOpenAI(model_name="gpt-4o-mini")
 # llm = ChatGoogleGenerativeAI(model = "gemini-pro")
 llm = ChatOpenAI(model = "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo",
-                    openai_api_key = st.secrets["74bb604a9b53804a4870a362f010d3714a373dc6e5b26eeb5dcba0ccfa4e723d"] , ## use your key
+                    openai_api_key = os.getenv("OPENAI_API_KEY"),
                     openai_api_base = "https://api.together.xyz/v1"
-
 )
 
 conversation = ConversationChain(memory=st.session_state.buffer_memory, llm=llm)
