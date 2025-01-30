@@ -25,9 +25,10 @@ if "messages" not in st.session_state.keys(): # Initialize the chat message hist
 # Initialize ChatOpenAI and ConversationChain
 # llm = ChatOpenAI(model_name="gpt-4o-mini")
 # llm = ChatGoogleGenerativeAI(model = "gemini-pro")
-llm = ChatOpenAI(model = "meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo",
-                    openai_api_key = os.getenv("OPENAI_API_KEY"),
-                    openai_api_base = "https://api.together.xyz/v1"
+llm = ChatOpenAI(
+    model_name="meta-llama/Llama-3.2-90B-Vision-Instruct-Turbo",
+    openai_api_key=os.getenv("OPENAI_API_KEY"),
+    openai_api_base="https://api.together.xyz/v1"
 )
 
 conversation = ConversationChain(memory=st.session_state.buffer_memory, llm=llm)
