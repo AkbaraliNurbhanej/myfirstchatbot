@@ -35,7 +35,7 @@ conversation = ConversationChain(memory=st.session_state.buffer_memory, llm=llm)
 
 # Create user interface
 st.title("🗣️ Conversational Chatbot 😉😉")
-st.subheader("㈻ Simple Chat Interface for LLMs by Build Fast with AI")
+st.subheader("㈻ Simple Chat Interface for LLMs by Akbarali")
 
 
 if prompt := st.chat_input("Your question"): # Prompt for user input and save to chat history
